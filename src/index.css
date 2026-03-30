@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body, html {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  @page {
+    margin: 1cm;
+    counter-increment: page;
+  }
+}
+
+/* Page numbering for print */
+@media print {
+  .page-number:after {
+    content: "Page " counter(page);
+  }
+}
+
+@media screen {
+  .print-only:not(.preview-mode) {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+  
+  .preview-mode {
+    display: block !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(0,0,0,0.8) !important;
+    overflow-y: auto !important;
+    padding: 2rem;
+  }
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
